@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Sample only</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jstat/1/jstat.min.js"></script>
+    <script type="text/javascript" src="./pagefunctions.js"></script>    
+    <script>google.setOnLoadCallback(aBayes.plotGraph);</script>
+    </head>
+    <body>
+        
+        <div id="plot" style="width: 600px; height: 400px;">
+        </div>
+        <div style="clear:both;width: 600px;">
+        <form name="TestResults" id="TestResults" class="form-horizontal">
+        <table class="table table-condensed table-bordered" style="width: 600px; float: left;">
+        <thead>
+        <tr>
+        <td>Version</td>
+        <td>Include</td>
+        <td>Trials</td>
+        <td>Successes</td>
+        <td>Apprx probability of being best</td>
+        <td>95% chance conversion rate between</td>
+        </tr>
+        </thead>
+        <tr>
+        <th id="l0">A</td>
+        <td><input type="checkbox" name="i0" Checked /></td>
+        <td><input type="text" name="n0" class="input-mini" value="100"></td>
+        <td><input type="text"  name="s0" class="input-mini" value="10"></td>
+        <td id="p0">&nbsp;</td>
+        <td id="r0">&nbsp;</td>
+        </tr>
+        <tr>
+        <th id="l1">B</td>
+        <td><input type="checkbox" name="i1" Checked /></td>
+        <td><input type="text" name="n1" class="input-mini" value="100"></td>
+        <td><input type="text" name="s1" class="input-mini" value="15"></td>
+        <td id="p1">&nbsp;</td>
+        <td id="r1">&nbsp;</td>
+        </tr>
+        <tr>
+        <th id="l2">C</td>
+        <td><input type="checkbox" name="i2" /></td>
+        <td><input type="text" name="n2" class="input-mini" value="0"></td>
+        <td><input type="text" name="s2" class="input-mini" value="0"></td>
+        <td id="p2">&nbsp;</td>
+        <td id="r2">&nbsp;</td>
+        </tr>
+        <tr>
+        <th id="l3">D</td>
+        <td><input type="checkbox" name="i3" /></td>
+        <td><input type="text" name="n3" class="input-mini" value="0"></td>
+        <td><input type="text" name="s3" class="input-mini" value="0"></td>
+        <td id="p3">&nbsp;</td>
+        <td id="r3">&nbsp;</td>
+        </tr>
+        </table>
+        <p>	  <br style="clear:both;"/><br />
+            <button type="button" class="btn-primary btn-large" onclick="aBayes.plotButton()" style="float: left;" id="plotAB">Calculate</button>&nbsp; <button type="button" class="btn-primary btn-large" onclick="aBayes.zoomButton()" style="float: left; margin-left:10px;" id="zoom">Zoom</button><br />
+        </form>
+        </div>
+    </body>
+</html>
