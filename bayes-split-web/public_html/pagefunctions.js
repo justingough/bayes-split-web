@@ -42,9 +42,7 @@ var aBayes = function(){
     }
     
     function plotButton(){
-         //send analytics events if the GA objects are defined - classic and universal
-        if (typeof _gaq === 'object') _gaq.push([ '_trackEvent', 'button', 'click', 'calculate' ]);
-        if (typeof ga === 'function') ga('send', 'event', 'button', 'click', 'calculate');
+        sendGAevent('button','click','calculate');
         plotGraph();
     };
 
@@ -54,9 +52,22 @@ var aBayes = function(){
         window.setTimeout(doCalcs, 1);
     };
     
+    function sendGAevent(category, action, label, value){
+        var valueClean; 
+        if (typeof value !=='undefined'){
+            if (!isNaN(value)) valueClean = parseInt(value);
+         }
+         if (typeof google_tag_manager === 'object'){
+            if (typeof dataLayer === 'undefined') dataLayer = [];//does not handle situation where dataLayer has a different name
+            dataLayer.push({'event': 'gaEvent', 'eventCategory': category, 'eventAction':action, 'eventLabel':label,'eventValue':valueClean });
+         }
+         else {
+            if (typeof ga === 'function') ga('send', category, action, label, valueClean);
+            if (typeof _gaq === 'object') _gaq.push([ '_trackEvent', category, action, label, valueClean ]);
+        }
+    }
     function zoomButton(){
-        if (typeof _gaq === 'object') _gaq.push([ '_trackEvent', 'button', 'click', 'zoom' ]);
-        if (typeof ga === 'function') ga('send', 'event', 'button', 'click', 'zoom');
+        sendGAevent('button','click','zoom');
         //aBayes.zoomgraph();
         window.setTimeout(zoomGraph, 1);
     };
